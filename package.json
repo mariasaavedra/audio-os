@@ -7,14 +7,18 @@
     "libs/*"
   ],
   "scripts": {
-     "dev": "npm run dev -w apps/web",
+    "dev": "npm run dev -w apps/web",
     "build": "npm run build -w apps/web",
     "start": "npm run start -w apps/web",
     "typecheck": "tsc --noEmit",
     "clean": "rimraf node_modules package-lock.json apps/*/node_modules libs/*/node_modules"
   },
   "devDependencies": {
-    "typescript": "^5.4.0",
-    "rimraf": "^5.0.0"
+    "@tanstack/eslint-plugin-query": "^5.97.0",
+    "rimraf": "^5.0.0",
+    "typescript": "^5.4.0"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.97.0"
   }
 }
