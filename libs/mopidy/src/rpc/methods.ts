@@ -169,6 +169,10 @@ export interface MopidyMethodMap {
     params: { uri?: string | null };
     result: MopidyRefRaw[];
   };
+  'core.library.get_images': {
+    params: { uris: string[] };
+    result: Record<string, MopidyImageRaw[]>;
+  };
   'core.library.search': {
     params: {
       query: Record<string, string[]>;

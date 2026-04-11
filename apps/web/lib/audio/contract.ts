@@ -11,6 +11,7 @@ export interface AudioSnapshot {
   tlTrack: TlTrack | null;
   tlid: number | null;
   timePosition: number | null;
+  artworkUrl: string | null;
 }
 
 // Action union
