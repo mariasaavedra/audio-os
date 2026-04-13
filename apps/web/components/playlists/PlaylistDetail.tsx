@@ -8,6 +8,9 @@ interface PlaylistDetailProps {
   onStartPlaylist: () => void;
   onPlayTrack: (uri: string) => void;
   onAddToQueue: (uri: string) => void;
+  hasMore?: boolean;
+  onLoadMore?: () => void;
+  isLoadingMore?: boolean;
 }
 
 export function PlaylistDetail({
@@ -15,6 +18,9 @@ export function PlaylistDetail({
   onStartPlaylist,
   onPlayTrack,
   onAddToQueue,
+  hasMore,
+  onLoadMore,
+  isLoadingMore,
 }: PlaylistDetailProps) {
   return (
     <div className="flex flex-col gap-4">
@@ -40,6 +46,15 @@ export function PlaylistDetail({
               onAdd={() => onAddToQueue(track.uri)}
             />
           ))}
+          {hasMore && (
+            <button
+              onClick={onLoadMore}
+              disabled={isLoadingMore}
+              className="mt-3 mx-3 py-2 text-sm text-charcoal/60 hover:text-charcoal disabled:opacity-40"
+            >
+              {isLoadingMore ? 'Loading…' : 'Load more'}
+            </button>
+          )}
         </div>
       )}
     </div>

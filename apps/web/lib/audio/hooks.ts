@@ -1,6 +1,6 @@
 'use client';
 
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { getPlaybackSnapshot, postPlaybackAction } from './api';
 import type {
   PlaybackActionRequest,
@@ -8,6 +8,8 @@ import type {
   PlaylistSummary,
   SearchResults,
 } from './contract';
+
+const TRACK_LIMIT = 50;
 
 export function usePlayback() {
   return useQuery({
@@ -43,17 +45,29 @@ export function usePlaylists() {
 }
 
 export function usePlaylistDetail(encodedUri: string) {
-  return useQuery<PlaylistDetail>({
+  return useInfiniteQuery<PlaylistDetail>({
     queryKey: ['playlists', encodedUri],
-    queryFn: () => fetchJson(`/api/playlists/${encodedUri}`),
+    queryFn: ({ pageParam }) =>
+      fetchJson(`/api/playlists/${encodedUri}?offset=${pageParam}&limit=${TRACK_LIMIT}`),
+    initialPageParam: 0,
+    getNextPageParam: (lastPage) => {
+      const next = lastPage.offset + lastPage.limit;
+      return next < lastPage.total ? next : undefined;
+    },
     enabled: encodedUri.length > 0,
   });
 }
 
 export function useSearch(q: string) {
-  return useQuery<SearchResults>({
+  return useInfiniteQuery<SearchResults>({
     queryKey: ['search', q],
-    queryFn: () => fetchJson(`/api/search?q=${encodeURIComponent(q)}`),
+    queryFn: ({ pageParam }) =>
+      fetchJson(`/api/search?q=${encodeURIComponent(q)}&offset=${pageParam}&limit=${TRACK_LIMIT}`),
+    initialPageParam: 0,
+    getNextPageParam: (lastPage) => {
+      const next = lastPage.offset + lastPage.limit;
+      return next < lastPage.total ? next : undefined;
+    },
     enabled: q.length > 0,
   });
 }

@@ -23,11 +23,17 @@ export interface PlaylistDetail {
   uri: string;
   name: string;
   tracks: NormalizedTrack[];
+  total: number;
+  offset: number;
+  limit: number;
 }
 
 export interface SearchResults {
   query: string;
   tracks: NormalizedTrack[];
+  total: number;
+  offset: number;
+  limit: number;
 }
 
 // Playback action union (app-oriented)

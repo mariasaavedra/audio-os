@@ -7,8 +7,10 @@ import { SearchResults } from '@/components/search/SearchResults';
 
 export default function SearchPage() {
   const [query, setQuery] = useState('');
-  const { data, isFetching } = useSearch(query);
+  const { data, isFetching, fetchNextPage, hasNextPage, isFetchingNextPage } = useSearch(query);
   const action = usePlaybackAction();
+
+  const tracks = data?.pages.flatMap((p) => p.tracks) ?? [];
 
   return (
     <main className="min-h-screen p-6 max-w-lg mx-auto">
@@ -17,12 +19,18 @@ export default function SearchPage() {
       <SearchBox value={query} onChange={setQuery} />
 
       <div className="mt-4">
-        {isFetching && <p className="text-sm text-charcoal/50 px-3">Searching…</p>}
+        {isFetching && !isFetchingNextPage && (
+          <p className="text-sm text-charcoal/50 px-3">Searching…</p>
+        )}
         {!isFetching && data && (
           <SearchResults
-            results={data}
+            tracks={tracks}
+            query={query}
             onPlayTrack={(uri) => action.mutate({ action: 'playTrack', uri })}
             onAddToQueue={(uri) => action.mutate({ action: 'addToQueue', uri })}
+            hasMore={hasNextPage}
+            onLoadMore={fetchNextPage}
+            isLoadingMore={isFetchingNextPage}
           />
         )}
       </div>

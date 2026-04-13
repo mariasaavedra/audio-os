@@ -12,20 +12,26 @@ function normalizeTrack(raw: MopidyTrackRaw): NormalizedTrack {
   };
 }
 
-export async function searchTracks(q: string): Promise<SearchResults> {
+export async function searchTracks(q: string, offset: number, limit: number): Promise<SearchResults> {
   const results = await mopidy.library.search({ any: [q] });
 
   const seen = new Set<string>();
-  const tracks: NormalizedTrack[] = [];
+  const allTracks: NormalizedTrack[] = [];
 
   for (const result of results) {
     for (const track of result.tracks ?? []) {
       if (!seen.has(track.uri)) {
         seen.add(track.uri);
-        tracks.push(normalizeTrack(track));
+        allTracks.push(normalizeTrack(track));
       }
     }
   }
 
-  return { query: q, tracks };
+  return {
+    query: q,
+    tracks: allTracks.slice(offset, offset + limit),
+    total: allTracks.length,
+    offset,
+    limit,
+  };
 }
