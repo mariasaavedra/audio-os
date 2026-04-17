@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "mkdir -p .next/standalone/apps/web/.next && cp -r public .next/standalone/apps/web/ && cp -r .next/static .next/standalone/apps/web/.next/",
     "start": "next start",
+    "start:standalone": "node .next/standalone/apps/web/server.js",
     "lint": "eslint"
   },
   "dependencies": {
