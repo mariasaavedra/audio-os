@@ -14,7 +14,23 @@
 
     "baseUrl": ".",
     "paths": {
-      "@m7/mopidy": ["libs/mopidy/src/index.ts"]
+      "@m7/audio-os/feature": ["libs/feature/src/index.ts"],
+      "@m7/audio-os/feature/shell": ["libs/feature/src/shell/index.ts"],
+      "@m7/audio-os/feature/library": ["libs/feature/src/library/index.ts"],
+      "@m7/audio-os/feature/playback": ["libs/feature/src/playback/index.ts"],
+      "@m7/audio-os/feature/search": ["libs/feature/src/search/index.ts"],
+
+      "@m7/audio-os/ui": ["libs/ui/src/index.ts"],
+      "@m7/audio-os/ui/primitives": ["libs/ui/src/primitives/index.ts"],
+      "@m7/audio-os/ui/navigation": ["libs/ui/src/navigation/index.ts"],
+      "@m7/audio-os/ui/feedback": ["libs/ui/src/feedback/index.ts"],
+
+      "@m7/audio-os/shared": ["libs/shared/src/index.ts"],
+      "@m7/audio-os/shared/types": ["libs/shared/src/types/index.ts"],
+      "@m7/audio-os/shared/constants": ["libs/shared/src/constants/index.ts"],
+      "@m7/audio-os/shared/utils": ["libs/shared/src/utils/index.ts"],
+
+      "@m7/audio-os/mopidy": ["libs/mopidy/src/index.ts"]
     }
   }
 }

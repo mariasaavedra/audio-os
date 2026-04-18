@@ -1,5 +1,5 @@
 {
-  "name": "@m7/audio-os-mopidy",
+  "name": "@m7/audio-os-shared",
   "version": "0.0.1",
   "private": true,
   "type": "module",

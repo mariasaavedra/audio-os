@@ -10,7 +10,14 @@
     "dev": "npm run dev -w apps/web",
     "build": "npm run build -w apps/web",
     "start": "npm run start -w apps/web",
+
     "typecheck": "tsc --noEmit",
+    "typecheck:web": "tsc --noEmit -p apps/web/tsconfig.json",
+    "typecheck:feature": "tsc --noEmit -p libs/feature/tsconfig.json",
+    "typecheck:ui": "tsc --noEmit -p libs/ui/tsconfig.json",
+    "typecheck:shared": "tsc --noEmit -p libs/shared/tsconfig.json",
+    "typecheck:mopidy": "tsc --noEmit -p libs/mopidy/tsconfig.json",
+
     "clean": "rimraf node_modules package-lock.json apps/*/node_modules libs/*/node_modules"
   },
   "devDependencies": {
