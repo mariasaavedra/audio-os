@@ -2,7 +2,7 @@
 
 import { use } from 'react';
 import { usePlaylistDetail, usePlaybackAction } from '@/lib/audio/hooks';
-import { PlaylistDetail } from '@/components/playlists/PlaylistDetail';
+import { PlaylistDetail } from '@m7/audio-os/feature/library';
 
 export default function PlaylistDetailPage({
   params,

@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 import { useSearch, usePlaybackAction } from '@/lib/audio/hooks';
-import { SearchBox } from '@/components/search/SearchBox';
-import { SearchResults } from '@/components/search/SearchResults';
+import { SearchBox, SearchResults } from '@m7/audio-os/feature/search';
 
 export default function SearchPage() {
   const [query, setQuery] = useState('');

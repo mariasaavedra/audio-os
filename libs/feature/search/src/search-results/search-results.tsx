@@ -1,7 +1,7 @@
 'use client';
 
-import type { NormalizedTrack } from '@/lib/audio/contract';
-import { TrackRow } from '@/components/playlists/TrackRow';
+import type { NormalizedTrack } from '@m7/audio-os/shared/types';
+import { TrackRow } from '@m7/audio-os/feature/library';
 
 interface SearchResultsProps {
   tracks: NormalizedTrack[];

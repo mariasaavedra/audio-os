@@ -1,7 +1,7 @@
 'use client';
 
-import type { PlaylistSummary } from '@/lib/audio/contract';
-import { PlaylistRow } from './PlaylistRow';
+import type { PlaylistSummary } from '@m7/audio-os/shared/types';
+import { PlaylistRow } from '../playlist-row';
 
 interface PlaylistListProps {
   playlists: PlaylistSummary[];

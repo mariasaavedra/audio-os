@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import type { PlaylistSummary } from '@/lib/audio/contract';
-import { encodeUri } from '@/lib/audio/encoding';
+import type { PlaylistSummary } from '@m7/audio-os/shared/types';
+import { encodeUri } from '@m7/audio-os/shared/utils';
 
 interface PlaylistRowProps {
   playlist: PlaylistSummary;

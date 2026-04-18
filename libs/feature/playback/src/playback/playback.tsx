@@ -1,9 +1,9 @@
 'use client';
 
-import type { PlaybackActionRequest, PlaybackSnapshot } from '@/lib/audio/contract';
+import type { PlaybackActionRequest, PlaybackSnapshot } from '@m7/audio-os/shared/types';
 import Image from 'next/image';
-import { ControlButton } from '@/components/ControlButton';
-import { ProgressBar } from '@/components/ProgressBar';
+import { ControlButton } from '../control-button';
+import { ProgressBar } from '../progress-bar';
 
 interface PlaybackProps {
   playback: PlaybackSnapshot;

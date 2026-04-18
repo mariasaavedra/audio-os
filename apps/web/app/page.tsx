@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Playback } from '@/components/playback/Playback';
+import { Playback } from '@m7/audio-os/feature/playback';
 import { usePlayback, usePlaybackAction } from '@/lib/audio/hooks';
 
 export default function Home() {

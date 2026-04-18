@@ -1,6 +1,6 @@
 'use client';
 
-import type { NormalizedTrack } from '@/lib/audio/contract';
+import type { NormalizedTrack } from '@m7/audio-os/shared/types';
 
 function formatMs(ms: number): string {
   const totalSecs = Math.floor(ms / 1000);

@@ -1,33 +1,9 @@
-// Normalized domain types — no raw Mopidy imports
+// Domain types live in libs/shared — re-exported here for backwards compat during migration
+export type { NormalizedTrack, PlaybackSnapshot, PlaybackActionRequest, PlaylistSummary, PlaylistDetail } from '@m7/audio-os/shared/types';
 
-export interface NormalizedTrack {
-  uri: string;
-  name: string;
-  artist: string;
-  duration: number | null;
-}
+import type { NormalizedTrack } from '@m7/audio-os/shared/types';
 
-export interface PlaybackSnapshot {
-  state: 'playing' | 'paused' | 'stopped';
-  track: NormalizedTrack | null;
-  position: number | null;
-  artworkUrl: string | null;
-}
-
-export interface PlaylistSummary {
-  uri: string;
-  name: string;
-}
-
-export interface PlaylistDetail {
-  uri: string;
-  name: string;
-  tracks: NormalizedTrack[];
-  total: number;
-  offset: number;
-  limit: number;
-}
-
+// Response envelope types — app-layer only
 export interface SearchResults {
   query: string;
   tracks: NormalizedTrack[];
@@ -36,20 +12,6 @@ export interface SearchResults {
   limit: number;
 }
 
-// Playback action union (app-oriented)
-export type PlaybackActionRequest =
-  | { action: 'play' }
-  | { action: 'pause' }
-  | { action: 'resume' }
-  | { action: 'previous' }
-  | { action: 'next' }
-  | { action: 'seek'; position: number }
-  | { action: 'playTrack'; uri: string }
-  | { action: 'addToQueue'; uri: string }
-  | { action: 'startPlaylist'; uri: string }
-  | { action: 'shuffle' };
-
-// Response envelope
 export interface AudioSuccess<T = undefined> {
   ok: true;
   data?: T;

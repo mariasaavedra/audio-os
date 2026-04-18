@@ -1,7 +1,7 @@
 'use client';
 
-import type { PlaylistDetail as PlaylistDetailType } from '@/lib/audio/contract';
-import { TrackRow } from './TrackRow';
+import type { PlaylistDetail as PlaylistDetailType } from '@m7/audio-os/shared/types';
+import { TrackRow } from '../track-row';
 
 interface PlaylistDetailProps {
   detail: PlaylistDetailType;

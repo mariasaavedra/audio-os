@@ -1,7 +1,7 @@
 'use client';
 
 import { usePlaylists, usePlaybackAction } from '@/lib/audio/hooks';
-import { PlaylistList } from '@/components/playlists/PlaylistList';
+import { PlaylistList } from '@m7/audio-os/feature/library';
 
 export default function PlaylistsPage() {
   const { data, isLoading, error } = usePlaylists();
