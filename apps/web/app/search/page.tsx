@@ -1,19 +1,27 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useSearch, usePlaybackAction } from '@/lib/audio/hooks';
 import { SearchBox, SearchResults } from '@m7/audio-os/feature/search';
 
 export default function SearchPage() {
-  const [query, setQuery] = useState('');
+  const searchParams = useSearchParams();
+  const [query, setQuery] = useState(searchParams.get('q') ?? '');
+
+  useEffect(() => {
+    const q = searchParams.get('q');
+    if (q !== null) setQuery(q);
+  }, [searchParams]);
+
   const { data, isFetching, fetchNextPage, hasNextPage, isFetchingNextPage } = useSearch(query);
   const action = usePlaybackAction();
 
   const tracks = data?.pages.flatMap((p) => p.tracks) ?? [];
 
   return (
-    <main className="min-h-screen p-6 max-w-lg mx-auto">
-      <h1 className="text-2xl font-bold text-dark mb-6">Search</h1>
+    <div className="px-6 py-5 max-w-2xl">
+      <h1 className="text-xl font-bold text-dark mb-4">Search</h1>
 
       <SearchBox value={query} onChange={setQuery} />
 
@@ -33,6 +41,6 @@ export default function SearchPage() {
           />
         )}
       </div>
-    </main>
+    </div>
   );
 }

@@ -16,6 +16,7 @@
     ],
     "paths": {
       "@/*": ["./*"],
+      "@m7/audio-os/feature/shell": ["../../libs/feature/shell/src/index.ts"],
       "@m7/audio-os/feature/playback": ["../../libs/feature/playback/src/index.ts"],
       "@m7/audio-os/feature/library": ["../../libs/feature/library/src/index.ts"],
       "@m7/audio-os/feature/search": ["../../libs/feature/search/src/index.ts"],
