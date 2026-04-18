@@ -125,12 +125,16 @@ The application follows a layered architecture to separate concerns:
 
 ### Configuration
 
-**Connecting to audio-os**: The Mopidy RPC URL points to the external audio-os service and is configured in `next.config.ts`:
-```typescript
-env: { MOPIDY_RPC_URL: "http://audio-os.local:6680/mopidy/rpc" }
+**Connecting to audio-os**: Set `MOPIDY_RPC_URL` as a server-side environment variable. It is read at request time in `apps/web/lib/mopidy.ts` and never baked into the client bundle.
+
+For local development, create `apps/web/.env.local`:
+```
+MOPIDY_RPC_URL=http://audio-os.local:6680/mopidy/rpc
 ```
 
-The Next.js config also:
+For production, inject the variable via systemd, Docker, or your process manager. The app will return a 500 at request time if the variable is missing — it does not fail at startup.
+
+The Next.js config:
 - Transpiles `@m7/mopidy` package
 - Outputs a standalone build for deployment
 - Sets `outputFileTracingRoot` for monorepo support

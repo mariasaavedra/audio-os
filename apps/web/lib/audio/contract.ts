@@ -40,6 +40,7 @@ export interface SearchResults {
 export type PlaybackActionRequest =
   | { action: 'play' }
   | { action: 'pause' }
+  | { action: 'resume' }
   | { action: 'previous' }
   | { action: 'next' }
   | { action: 'seek'; position: number }

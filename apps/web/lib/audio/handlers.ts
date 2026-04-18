@@ -14,6 +14,10 @@ export async function handleAudioAction(
       await mopidy.playback.pause();
       return { ok: true };
 
+    case 'resume':
+      await mopidy.playback.resume();
+      return { ok: true };
+
     case 'previous':
       await mopidy.playback.previous();
       return { ok: true };

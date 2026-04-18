@@ -2,9 +2,6 @@ import type { NormalizedTrack, PlaybackSnapshot } from '@/lib/audio/contract';
 import { createMopidyClient } from '@/lib/mopidy';
 import type { MopidyTrackRaw } from '@m7/mopidy';
 
-
-const mopidy = createMopidyClient();
-
 function normalizeTrack(raw: MopidyTrackRaw): NormalizedTrack {
   return {
     uri: raw.uri,
@@ -15,6 +12,7 @@ function normalizeTrack(raw: MopidyTrackRaw): NormalizedTrack {
 }
 
 export async function getPlaybackSnapshot(): Promise<PlaybackSnapshot> {
+  const mopidy = createMopidyClient();
   const [state, track, timePosition] = await Promise.all([
     mopidy.playback.getState(),
     mopidy.playback.getCurrentTrack(),

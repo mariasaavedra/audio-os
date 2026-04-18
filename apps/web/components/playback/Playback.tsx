@@ -13,6 +13,7 @@ interface PlaybackProps {
 export function Playback({ playback, onPlaybackAction }: PlaybackProps) {
   const { state, track, position, artworkUrl } = playback;
   const isPlaying = state === 'playing';
+  const isPaused = state === 'paused';
   const title = track?.name ?? 'No track';
   const artist = track?.artist ?? 'Unknown artist';
   const duration = track?.duration ?? null;
@@ -72,7 +73,7 @@ export function Playback({ playback, onPlaybackAction }: PlaybackProps) {
         <ControlButton
           icon={isPlaying ? '/icons/svg/pause.svg' : '/icons/svg/play.svg'}
           alt={isPlaying ? 'Pause' : 'Play'}
-          onClick={() => onPlaybackAction({ action: isPlaying ? 'pause' : 'play' })}
+          onClick={() => onPlaybackAction({ action: isPlaying ? 'pause' : isPaused ? 'resume' : 'play' })}
           size="lg"
           variant="white"
         />

@@ -3,7 +3,6 @@ import { createMopidyClient } from '@/lib/mopidy';
 import type { MopidyTrackRaw } from '@m7/mopidy';
 import 'server-only';
 
-const mopidy = createMopidyClient();
 function normalizeTrack(raw: MopidyTrackRaw): NormalizedTrack {
   return {
     uri: raw.uri,
@@ -14,6 +13,7 @@ function normalizeTrack(raw: MopidyTrackRaw): NormalizedTrack {
 }
 
 export async function searchTracks(q: string, offset: number, limit: number): Promise<SearchResults> {
+  const mopidy = createMopidyClient();
   const results = await mopidy.library.search({ any: [q] });
 
   const seen = new Set<string>();

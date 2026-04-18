@@ -3,8 +3,6 @@ import { createMopidyClient } from '@/lib/mopidy';
 import type { MopidyTrackRaw } from '@m7/mopidy';
 import 'server-only';
 
-const mopidy = createMopidyClient();
-
 function normalizeTrack(raw: MopidyTrackRaw): NormalizedTrack {
   return {
     uri: raw.uri,
@@ -15,11 +13,13 @@ function normalizeTrack(raw: MopidyTrackRaw): NormalizedTrack {
 }
 
 export async function getPlaylists(): Promise<PlaylistSummary[]> {
+  const mopidy = createMopidyClient();
   const refs = await mopidy.playlists.list();
   return refs.map((r) => ({ uri: r.uri, name: r.name }));
 }
 
 export async function getPlaylistDetail(uri: string, offset: number, limit: number): Promise<PlaylistDetail> {
+  const mopidy = createMopidyClient();
   const [refs, allPlaylists] = await Promise.all([
     mopidy.playlists.getItems(uri),
     mopidy.playlists.list(),
