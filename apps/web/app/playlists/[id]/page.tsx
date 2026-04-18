@@ -21,7 +21,7 @@ export default function PlaylistDetailPage({
   const tracks = data.pages.flatMap((p) => p.tracks);
 
   return (
-    <main className="min-h-screen p-6 max-w-lg mx-auto">
+    <main className="min-h-screen max-w-8xl p-6 mx-auto">
       <PlaylistDetail
         detail={{ ...firstPage, tracks }}
         onStartPlaylist={() => action.mutate({ action: 'startPlaylist', uri: firstPage.uri })}

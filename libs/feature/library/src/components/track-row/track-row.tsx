@@ -11,36 +11,37 @@ function formatMs(ms: number): string {
 
 interface TrackRowProps {
   track: NormalizedTrack;
+  index?: number;
   onPlay: () => void;
   onAdd: () => void;
 }
 
-export function TrackRow({ track, onPlay, onAdd }: TrackRowProps) {
+export function TrackRow({ track, index, onPlay, onAdd }: TrackRowProps) {
   return (
-    <div className="flex items-center gap-3 py-2 px-3 rounded-xl hover:bg-charcoal/5 group">
-      <div className="flex flex-col min-w-0 flex-1">
-        <span className="text-lg font-medium text-dark truncate">{track.name}</span>
-        <span className="text-base text-charcoal/70 truncate">{track.artist}</span>
+    <div className="grid grid-cols-[3rem_1fr_5rem_6rem] items-center px-4 py-3 hover:bg-charcoal/5 group border-b border-charcoal/5 last:border-0">
+      <span className="text-sm tabular-nums text-charcoal/40 text-center">{index}</span>
+
+      <div className="flex flex-col min-w-0 pr-4">
+        <span className="text-sm font-medium text-dark truncate">{track.name}</span>
+        <span className="text-xs text-charcoal/50 truncate">{track.artist}</span>
       </div>
 
-      {track.duration != null && (
-        <span className="text-base tabular-nums text-charcoal/50 shrink-0">
-          {formatMs(track.duration)}
-        </span>
-      )}
+      <span className="text-sm tabular-nums text-charcoal/40 text-right">
+        {track.duration != null ? formatMs(track.duration) : '—'}
+      </span>
 
-      <div className="flex gap-1 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
+      <div className="flex gap-1 justify-end opacity-0 group-hover:opacity-100 transition-opacity">
         <button
           onClick={onPlay}
-          className="text-base px-2 py-1 rounded-lg bg-brand text-white hover:bg-brand/80"
+          className="text-xs px-2 py-1 rounded-lg bg-brand text-white hover:bg-brand/80"
         >
           Play
         </button>
         <button
           onClick={onAdd}
-          className="text-base px-2 py-1 rounded-lg bg-charcoal/10 text-charcoal hover:bg-charcoal/20"
+          className="text-xs px-2 py-1 rounded-lg bg-charcoal/10 text-charcoal hover:bg-charcoal/20"
         >
-          Add
+          +
         </button>
       </div>
     </div>
