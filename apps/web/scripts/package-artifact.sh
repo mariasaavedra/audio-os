@@ -8,6 +8,8 @@ OUT_DIR="$ROOT_DIR/apps/web/dist/artifact-out"
 TIMESTAMP="$(date -u +%Y%m%dT%H%M%SZ)"
 TARBALL="$ROOT_DIR/apps/web/dist/deck-${TIMESTAMP}-linux-arm64.tar.gz"
 
+DEPLOY_SCRIPT="$SCRIPT_DIR/deploy-artifact.sh"
+
 rm -rf "$OUT_DIR"
 mkdir -p "$OUT_DIR"
 
@@ -34,5 +36,6 @@ tar -czf "$TARBALL" -C "$OUT_DIR" standalone
 rm -rf "$OUT_DIR"
 
 echo "Artifact ready: $TARBALL"
+echo
 echo "Deploy with:"
-echo "scp \"$TARBALL\" audio@audio-os.local:/home/deck/"
+echo "bash \"$DEPLOY_SCRIPT\" \"$TARBALL\""

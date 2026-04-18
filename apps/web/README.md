@@ -138,7 +138,7 @@ What the script does:
 ```bash
 bash apps/web/scripts/package-artifact.sh
 # then copy the printed scp command and run it, e.g.:
-scp apps/web/dist/deck-20260417T120000Z-linux-arm64.tar.gz audio@audio-os.local:/home/deck/
+scp apps/web/dist/deck-20260417T120000Z-linux-arm64.tar.gz audio@audio-os.local:/home/audio/
 ```
 
 On the device, extract and start the server:
