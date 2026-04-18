@@ -2,7 +2,7 @@ import type { NextConfig } from 'next';
 import path from 'path';
 
 const nextConfig: NextConfig = {
-  transpilePackages: ['@m7/audio-os-mopidy', '@m7/audio-os-feature', '@m7/audio-os-shared', '@m7/audio-os-ui'],
+  transpilePackages: ['@m7/audio-os-mopidy', '@m7/audio-os-feature', '@m7/audio-os-shared', '@m7/audio-os-ui', '@heroui/react', '@heroui/styles'],
   output: 'standalone',
   // Only needed if apps/web imports files from outside apps/web
   // e.g. ../../packages/shared or repo-level files
