@@ -71,3 +71,16 @@ export function useSearch(q: string) {
     enabled: q.length > 0,
   });
 }
+
+export function useAllTracks() {
+  return useInfiniteQuery<SearchResults>({
+    queryKey: ['tracks'],
+    queryFn: ({ pageParam }) =>
+      fetchJson(`/api/tracks?offset=${pageParam}&limit=${TRACK_LIMIT}`),
+    initialPageParam: 0,
+    getNextPageParam: (lastPage) => {
+      const next = lastPage.offset + lastPage.limit;
+      return next < lastPage.total ? next : undefined;
+    },
+  });
+}

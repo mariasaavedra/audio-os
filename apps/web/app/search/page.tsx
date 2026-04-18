@@ -1,18 +1,13 @@
 'use client';
 
 import { usePlaybackAction, useSearch } from '@/lib/audio/hooks';
-import { SearchBox, SearchResults } from '@m7/audio-os/feature/search';
+import { SearchResults } from '@m7/audio-os/feature/search';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { Suspense } from 'react';
 
-export default function SearchPage() {
+function SearchPageInner() {
   const searchParams = useSearchParams();
-  const [query, setQuery] = useState(searchParams.get('q') ?? '');
-
-  useEffect(() => {
-    const q = searchParams.get('q');
-    if (q !== null) setQuery(q);
-  }, [searchParams]);
+  const query = searchParams.get('q')?.trim() ?? '';
 
   const { data, isFetching, fetchNextPage, hasNextPage, isFetchingNextPage } = useSearch(query);
   const action = usePlaybackAction();
@@ -21,26 +16,37 @@ export default function SearchPage() {
 
   return (
     <div className="px-6 py-5 max-w-2xl">
-      <h1 className="text-xl font-bold text-dark mb-4">Search</h1>
+      <h1 className="text-2xl font-bold text-dark mb-6">
+        {query ? `Results for "${query}"` : 'Search'}
+      </h1>
 
-      <SearchBox value={query} onChange={setQuery} />
+      {isFetching && !isFetchingNextPage && (
+        <p className="text-lg text-charcoal/50 px-3">Searching…</p>
+      )}
 
-      <div className="mt-4">
-        {isFetching && !isFetchingNextPage && (
-          <p className="text-lg text-charcoal/50 px-3">Searching…</p>
-        )}
-        {!isFetching && data && (
-          <SearchResults
-            tracks={tracks}
-            query={query}
-            onPlayTrack={(uri) => action.mutate({ action: 'playTrack', uri })}
-            onAddToQueue={(uri) => action.mutate({ action: 'addToQueue', uri })}
-            hasMore={hasNextPage}
-            onLoadMore={fetchNextPage}
-            isLoadingMore={isFetchingNextPage}
-          />
-        )}
-      </div>
+      {!isFetching && query && (
+        <SearchResults
+          tracks={tracks}
+          query={query}
+          onPlayTrack={(uri) => action.mutate({ action: 'playTrack', uri })}
+          onAddToQueue={(uri) => action.mutate({ action: 'addToQueue', uri })}
+          hasMore={hasNextPage}
+          onLoadMore={fetchNextPage}
+          isLoadingMore={isFetchingNextPage}
+        />
+      )}
+
+      {!query && (
+        <p className="text-lg text-charcoal/50">Type something in the search bar above.</p>
+      )}
     </div>
+  );
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense>
+      <SearchPageInner />
+    </Suspense>
   );
 }

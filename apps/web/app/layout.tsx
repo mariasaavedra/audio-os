@@ -1,6 +1,7 @@
 import { Sidebar, TopBar } from '@m7/audio-os/feature/shell';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import { Suspense } from 'react';
 import './globals.css';
 import { PlayerBarConnected } from './player-bar-connected';
 import { Providers } from './providers';
@@ -32,7 +33,7 @@ export default function RootLayout({
           <div className="flex h-full">
             <Sidebar />
             <div className="flex flex-col flex-1 min-w-0 overflow-hidden">
-              <TopBar />
+              <Suspense><TopBar /></Suspense>
               <main className="flex-1 overflow-y-auto pb-20">{children}</main>
             </div>
           </div>

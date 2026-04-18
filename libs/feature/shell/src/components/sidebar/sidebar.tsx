@@ -6,6 +6,8 @@ import { usePathname } from 'next/navigation';
 
 const NAV = [
   { href: '/', label: 'Home', icon: '/icons/svg/music.svg' },
+  { href: '/playlists', label: 'Playlists', icon: '/icons/svg/music.svg' },
+  { href: '/tracks', label: 'Tracks', icon: '/icons/svg/music.svg' },
 ] as const;
 
 export function Sidebar() {

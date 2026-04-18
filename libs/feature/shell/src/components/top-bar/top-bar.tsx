@@ -2,12 +2,22 @@
 
 import { Button, SearchField, Label } from '@m7/audio-os/ui/primitives';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export function TopBar() {
   const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const [query, setQuery] = useState('');
+
+  useEffect(() => {
+    if (pathname === '/search') {
+      setQuery(searchParams.get('q') ?? '');
+    } else {
+      setQuery('');
+    }
+  }, [pathname, searchParams]);
 
   function handleSubmit(val: string) {
     const q = val.trim();
