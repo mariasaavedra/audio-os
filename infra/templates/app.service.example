@@ -4,7 +4,7 @@ After=network-online.target mopidy.service
 
 [Service]
 User=audio
-WorkingDirectory=/home/audio/app/current/.next/standalone
+WorkingDirectory=/home/audio/web/current/.next/standalone
 ExecStart=/usr/bin/node apps/web/server.js
 Restart=always
 Environment=NODE_ENV=production
