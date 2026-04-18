@@ -1,5 +1,4 @@
-# Maria Signal
-
+# Audio OS
 A monorepo for applications and libraries that interact with the [audio-os](http://audio-os.local) service.
 
 ## Overview
@@ -56,7 +55,7 @@ npm run typecheck  # runs across entire monorepo
 ## Project Structure
 
 ```
-maria-signal/
+audio-os/
 ├── apps/
 │   └── web/          # Next.js web player
 ├── libs/
