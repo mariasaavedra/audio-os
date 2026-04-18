@@ -13,13 +13,7 @@ export function Sidebar() {
 
   return (
     <aside className="w-40 shrink-0 flex flex-col bg-light border-r border-charcoal/10 py-5 px-3 gap-0.5">
-      {/* Logo */}
-      <div className="flex items-center gap-2 px-2 pb-5 mb-1">
-        <div className="w-7 h-7 bg-dark rounded-md flex items-center justify-center shrink-0">
-          <Image src="/icons/svg/music.svg" alt="" width={13} height={13} className="invert" />
-        </div>
-        <span className="text-lg font-semibold text-dark tracking-tight">Monochrome</span>
-      </div>
+
 
       {NAV.map(({ href, label, icon }) => {
         const isActive = href === '/' ? pathname === '/' : pathname.startsWith(href);

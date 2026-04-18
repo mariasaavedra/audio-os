@@ -1,10 +1,9 @@
+import { Sidebar, TopBar } from '@m7/audio-os/feature/shell';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
-import { Providers } from './providers';
-import { Sidebar } from '@m7/audio-os/feature/shell';
-import { TopBar } from '@m7/audio-os/feature/shell';
 import { PlayerBarConnected } from './player-bar-connected';
+import { Providers } from './providers';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -17,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Monochrome',
+  title: 'Audio OS',
   description: 'Your music, simply.',
 };
 
