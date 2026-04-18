@@ -1,5 +1,6 @@
 'use client';
 
+import { SearchField, Label } from '@m7/audio-os/ui/primitives';
 import { useEffect, useRef, useState } from 'react';
 
 interface SearchBoxProps {
@@ -15,20 +16,20 @@ export function SearchBox({ value, onChange }: SearchBoxProps) {
     setLocal(value);
   }, [value]);
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const v = e.target.value;
-    setLocal(v);
+  function handleChange(val: string) {
+    setLocal(val);
     if (timer.current) clearTimeout(timer.current);
-    timer.current = setTimeout(() => onChange(v), 300);
+    timer.current = setTimeout(() => onChange(val), 300);
   }
 
   return (
-    <input
-      type="search"
+    <SearchField
       value={local}
       onChange={handleChange}
-      placeholder="Search tracks…"
-      className="w-full rounded-xl px-4 py-2.5 text-lg bg-charcoal/10 text-dark placeholder:text-charcoal/40 outline-none focus:ring-2 focus:ring-brand/40"
-    />
+      onClear={() => handleChange('')}
+      className="w-full"
+    >
+      <Label className="sr-only">Search tracks</Label>
+    </SearchField>
   );
 }

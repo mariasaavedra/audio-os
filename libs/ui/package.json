@@ -4,9 +4,10 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./src/index.ts"
+    "./primitives": "./primitives/src/index.ts",
+    "./feedback": "./feedback/src/index.ts",
+    "./navigation": "./navigation/src/index.ts"
   },
-  "types": "./src/index.ts",
   "dependencies": {
     "@heroui/react": "^3.0.3",
     "@heroui/styles": "^3.0.3"

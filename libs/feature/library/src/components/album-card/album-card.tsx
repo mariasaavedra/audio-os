@@ -1,3 +1,4 @@
+import { Button, Card } from '@m7/audio-os/ui/primitives';
 import Image from 'next/image';
 
 interface AlbumCardProps {
@@ -17,32 +18,34 @@ export function AlbumCard({ name, artist, year, artworkUrl, onClick }: AlbumCard
   const hue = hueFromString(name);
 
   return (
-    <button onClick={onClick} className="flex flex-col gap-2 text-left group w-full">
-      <div className="aspect-square w-full rounded-xl overflow-hidden shadow-sm">
-        {artworkUrl ? (
-          <Image
-            src={artworkUrl}
-            alt={name}
-            width={200}
-            height={200}
-            className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
-            unoptimized
-          />
-        ) : (
-          <div
-            className="w-full h-full flex items-center justify-center"
-            style={{
-              background: `linear-gradient(135deg, hsl(${hue} 40% 72%), hsl(${(hue + 45) % 360} 50% 58%))`,
-            }}
-          >
-            <Image src="/icons/svg/music.svg" alt="" width={28} height={28} className="opacity-25 invert" />
-          </div>
-        )}
-      </div>
-      <div className="min-w-0 px-0.5">
-        <p className="text-lg font-medium text-dark truncate">{name}</p>
-        {subtitle && <p className="text-base text-charcoal/55 truncate">{subtitle}</p>}
-      </div>
-    </button>
+    <Button variant="ghost" onPress={onClick} className="flex flex-col gap-2 text-left w-full h-auto p-0 group">
+      <Card className="w-full">
+        <div className="aspect-square w-full rounded-xl overflow-hidden shadow-sm">
+          {artworkUrl ? (
+            <Image
+              src={artworkUrl}
+              alt={name}
+              width={200}
+              height={200}
+              className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+              unoptimized
+            />
+          ) : (
+            <div
+              className="w-full h-full flex items-center justify-center"
+              style={{
+                background: `linear-gradient(135deg, hsl(${hue} 40% 72%), hsl(${(hue + 45) % 360} 50% 58%))`,
+              }}
+            >
+              <Image src="/icons/svg/music.svg" alt="" width={28} height={28} className="opacity-25 invert" />
+            </div>
+          )}
+        </div>
+        <div className="min-w-0 px-0.5 py-1">
+          <p className="text-lg font-medium text-dark truncate">{name}</p>
+          {subtitle && <p className="text-base text-charcoal/55 truncate">{subtitle}</p>}
+        </div>
+      </Card>
+    </Button>
   );
 }

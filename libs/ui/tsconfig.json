@@ -1,8 +1,6 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "composite": true,
-    "rootDir": "src",
     "noEmit": true,
     "module": "ESNext",
     "moduleResolution": "Bundler",
@@ -13,5 +11,5 @@
     "esModuleInterop": true,
     "skipLibCheck": true
   },
-  "include": ["src"]
+  "include": ["primitives/src", "feedback/src", "navigation/src"]
 }

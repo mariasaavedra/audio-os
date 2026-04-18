@@ -1,5 +1,6 @@
 'use client';
 
+import { Button } from '@m7/audio-os/ui/primitives';
 import type { NormalizedTrack } from '@m7/audio-os/shared/types';
 
 function formatMs(ms: number): string {
@@ -31,18 +32,12 @@ export function TrackRow({ track, index, onPlay, onAdd }: TrackRowProps) {
       </span>
 
       <div className="flex gap-1 justify-end opacity-0 group-hover:opacity-100 transition-opacity">
-        <button
-          onClick={onPlay}
-          className="text-xs px-2 py-1 rounded-lg bg-brand text-white hover:bg-brand/80"
-        >
+        <Button size="sm" onPress={onPlay}>
           Play
-        </button>
-        <button
-          onClick={onAdd}
-          className="text-xs px-2 py-1 rounded-lg bg-charcoal/10 text-charcoal hover:bg-charcoal/20"
-        >
+        </Button>
+        <Button size="sm" variant="secondary" onPress={onAdd}>
           +
-        </button>
+        </Button>
       </div>
     </div>
   );

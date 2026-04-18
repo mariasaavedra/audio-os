@@ -1,5 +1,7 @@
 'use client';
 
+import { Button } from '@m7/audio-os/ui/primitives';
+import { Spinner } from '@m7/audio-os/ui/feedback';
 import { TrackRow } from '@m7/audio-os/feature/library';
 import type { NormalizedTrack } from '@m7/audio-os/shared/types';
 
@@ -41,13 +43,15 @@ export function SearchResults({
         />
       ))}
       {hasMore && (
-        <button
-          onClick={onLoadMore}
-          disabled={isLoadingMore}
-          className="mt-3 mx-3 py-2 text-lg text-charcoal/60 hover:text-charcoal disabled:opacity-40"
-        >
-          {isLoadingMore ? 'Loading…' : 'Load more'}
-        </button>
+        <div className="mt-3 mx-3 flex justify-center">
+          {isLoadingMore ? (
+            <Spinner size="sm" />
+          ) : (
+            <Button variant="ghost" onPress={onLoadMore}>
+              Load more
+            </Button>
+          )}
+        </div>
       )}
     </div>
   );
