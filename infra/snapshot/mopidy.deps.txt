@@ -1,0 +1,47 @@
+Executable: /usr/bin/mopidy
+Platform: Linux-6.12.62+rpt-rpi-v8-aarch64-with-glibc2.41
+Python: CPython 3.13.5 from /usr/lib/python3.13
+Mopidy: 3.4.2 from /usr/lib/python3/dist-packages
+mopidy-tidal: 0.3.13 from /usr/local/lib/python3.13/dist-packages
+  Mopidy: 3.4.2 from /usr/lib/python3/dist-packages
+  tidalapi: 0.8.11 from /usr/local/lib/python3.13/dist-packages
+    isodate: 0.7.2 from /usr/local/lib/python3.13/dist-packages
+    mpegdash: 0.4.1 from /usr/local/lib/python3.13/dist-packages
+    pyaes: 1.6.1 from /usr/local/lib/python3.13/dist-packages
+    python-dateutil: 2.9.0 from /usr/lib/python3/dist-packages
+    ratelimit: 2.2.1 from /usr/local/lib/python3.13/dist-packages
+    requests: 2.32.3 from /usr/lib/python3/dist-packages
+      charset-normalizer: 3.4.2 from /usr/lib/python3/dist-packages
+      idna: 3.10 from /usr/lib/python3/dist-packages
+      urllib3: 2.3.0 from /usr/lib/python3/dist-packages
+      certifi: 2025.1.31 from /usr/lib/python3/dist-packages
+    typing-extensions: 4.13.2 from /usr/lib/python3/dist-packages
+GStreamer: 1.26.2.0 from /usr/lib/python3/dist-packages/gi
+  Detailed information: 
+    Python wrapper: python-gi 3.50.0
+    Relevant elements:
+      Found:
+        uridecodebin
+        souphttpsrc
+        appsrc
+        alsasink
+        osssink
+        oss4sink
+        pulsesink
+        id3demux
+        id3v2mux
+        lamemp3enc
+        mpegaudioparse
+        mpg123audiodec
+        vorbisdec
+        vorbisenc
+        vorbisparse
+        oggdemux
+        oggmux
+        oggparse
+        flacdec
+        flacparse
+        shout2send
+      Not found:
+        flump3dec
+        mad

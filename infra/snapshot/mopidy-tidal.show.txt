@@ -1,0 +1,10 @@
+Name: mopidy-tidal
+Version: 0.3.13
+Summary: Mopidy Extension for Tidal music service integration.
+Home-page: 
+Author: Johannes Linde
+Author-email: tehkillerbee@users.noreply.github.com
+License: Apache-2.0
+Location: /usr/local/lib/python3.13/dist-packages
+Requires: Mopidy, tidalapi
+Required-by: 
