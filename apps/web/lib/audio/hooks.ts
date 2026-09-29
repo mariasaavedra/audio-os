@@ -5,7 +5,9 @@ import { getPlaybackSnapshot, postPlaybackAction } from './api';
 import type {
   PlaybackActionRequest,
   PlaylistDetail,
+  HistoryItem,
   PlaylistSummary,
+  QueueSnapshot,
   SearchResults,
 } from './contract';
 
@@ -26,6 +28,7 @@ export function usePlaybackAction() {
     mutationFn: (input: PlaybackActionRequest) => postPlaybackAction(input),
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: ['playback'] });
+      qc.invalidateQueries({ queryKey: ['queue'] });
     },
   });
 }
@@ -35,6 +38,22 @@ async function fetchJson<T>(url: string): Promise<T> {
   const json = await res.json();
   if (!json.ok) throw new Error(json.error ?? 'Request failed');
   return json.data;
+}
+
+export function useQueue() {
+  return useQuery<QueueSnapshot>({
+    queryKey: ['queue'],
+    queryFn: () => fetchJson('/api/queue'),
+    refetchInterval: 2000,
+  });
+}
+
+export function useHistory() {
+  return useQuery<HistoryItem[]>({
+    queryKey: ['history'],
+    queryFn: () => fetchJson('/api/history'),
+    refetchInterval: 5000,
+  });
 }
 
 export function usePlaylists() {

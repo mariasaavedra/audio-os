@@ -3,7 +3,7 @@ import { createMopidyClient } from '@/lib/mopidy';
 import type { MopidyTrackRaw } from '@m7/mopidy';
 import 'server-only';
 
-function normalizeTrack(raw: MopidyTrackRaw): NormalizedTrack {
+export function normalizeTrack(raw: MopidyTrackRaw): NormalizedTrack {
   return {
     uri: raw.uri,
     name: raw.name ?? 'Unknown track',

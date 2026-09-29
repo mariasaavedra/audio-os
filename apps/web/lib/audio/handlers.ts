@@ -55,5 +55,17 @@ export async function handleAudioAction(
     case 'shuffle':
       await mopidy.queue.shuffle();
       return { ok: true };
+
+    case 'playQueueItem':
+      await mopidy.playback.play(input.tlid);
+      return { ok: true };
+
+    case 'removeFromQueue':
+      await mopidy.queue.remove({ tlid: [input.tlid] });
+      return { ok: true };
+
+    case 'clearQueue':
+      await mopidy.queue.clear();
+      return { ok: true };
   }
 }
