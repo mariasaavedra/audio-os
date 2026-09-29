@@ -1,6 +1,7 @@
 'use client';
 
-import { useAllTracks, usePlaybackAction, usePlaylists } from '@/lib/audio/hooks';
+import { useAllTracks, usePlaybackAction, usePlaylists, useTidalMixes } from '@/lib/audio/hooks';
+import { MixRow, MixRowSkeleton } from '@m7/audio-os/feature/library';
 import { encodeUri } from '@m7/audio-os/shared/utils';
 import {
   Badge,
@@ -111,11 +112,37 @@ function PlaylistsPanel() {
   );
 }
 
+function MixesSection() {
+  const { data, isLoading } = useTidalMixes();
+
+  const renderLink = ({ href, className, children }: { href: string; className?: string; children: React.ReactNode }) => (
+    <Link href={href} className={className}>
+      {children}
+    </Link>
+  );
+  const hrefFor = (mix: { uri: string }) => `/tidal/mixes/${encodeUri(mix.uri)}`;
+
+  if (isLoading) return <MixRowSkeleton title="Your listening history" />;
+  const history = data?.filter((m) => m.kind === 'history') ?? [];
+  const mixes = data?.filter((m) => m.kind === 'mix') ?? [];
+  if (!history.length && !mixes.length) return null;
+
+  return (
+    <div className="mb-8 flex flex-col gap-8">
+      {history.length > 0 && (
+        <MixRow title="Your listening history" mixes={history} hrefFor={hrefFor} renderLink={renderLink} />
+      )}
+      {mixes.length > 0 && <MixRow title="Your mixes" mixes={mixes} hrefFor={hrefFor} renderLink={renderLink} />}
+    </div>
+  );
+}
+
 export default function BrowsePage() {
   const { data: playlists } = usePlaylists();
 
   return (
     <main className="px-6 py-5">
+      <MixesSection />
       <h1 className="mb-6 text-2xl font-bold">Browse</h1>
       <Tabs defaultValue="tracks">
         <TabsList>

@@ -1,5 +1,5 @@
 // Domain types live in libs/shared — re-exported here for backwards compat during migration
-export type { NormalizedTrack, PlaybackSnapshot, PlaybackActionRequest, PlaylistSummary, PlaylistDetail, QueueItem, QueueSnapshot, HistoryItem } from '@m7/audio-os/shared/types';
+export type { NormalizedTrack, PlaybackSnapshot, PlaybackActionRequest, PlaylistSummary, PlaylistDetail, QueueItem, QueueSnapshot, HistoryItem, TidalMixSummary, TidalMixDetail } from '@m7/audio-os/shared/types';
 
 import type { NormalizedTrack } from '@m7/audio-os/shared/types';
 

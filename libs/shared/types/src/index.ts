@@ -41,6 +41,23 @@ export interface PlaylistDetail {
   limit: number;
 }
 
+export interface TidalMixSummary {
+  uri: string;
+  name: string;
+  subtitle: string;
+  kind: 'history' | 'mix';
+  artworkUrl: string | null;
+}
+
+export interface TidalMixDetail {
+  uri: string;
+  name: string;
+  tracks: NormalizedTrack[];
+  total: number;
+  offset: number;
+  limit: number;
+}
+
 export type PlaybackActionRequest =
   | { action: 'play' }
   | { action: 'pause' }

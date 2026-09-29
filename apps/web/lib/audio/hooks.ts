@@ -9,6 +9,8 @@ import type {
   PlaylistSummary,
   QueueSnapshot,
   SearchResults,
+  TidalMixDetail,
+  TidalMixSummary,
 } from './contract';
 
 const TRACK_LIMIT = 50;
@@ -68,6 +70,28 @@ export function usePlaylistDetail(encodedUri: string) {
     queryKey: ['playlists', encodedUri],
     queryFn: ({ pageParam }) =>
       fetchJson(`/api/playlists/${encodedUri}?offset=${pageParam}&limit=${TRACK_LIMIT}`),
+    initialPageParam: 0,
+    getNextPageParam: (lastPage) => {
+      const next = lastPage.offset + lastPage.limit;
+      return next < lastPage.total ? next : undefined;
+    },
+    enabled: encodedUri.length > 0,
+  });
+}
+
+export function useTidalMixes() {
+  return useQuery<TidalMixSummary[]>({
+    queryKey: ['tidal', 'mixes'],
+    queryFn: () => fetchJson('/api/tidal/mixes'),
+    staleTime: 5 * 60 * 1000,
+  });
+}
+
+export function useTidalMixDetail(encodedUri: string) {
+  return useInfiniteQuery<TidalMixDetail>({
+    queryKey: ['tidal', 'mixes', encodedUri],
+    queryFn: ({ pageParam }) =>
+      fetchJson(`/api/tidal/mixes/${encodedUri}?offset=${pageParam}&limit=${TRACK_LIMIT}`),
     initialPageParam: 0,
     getNextPageParam: (lastPage) => {
       const next = lastPage.offset + lastPage.limit;
