@@ -1,40 +1,33 @@
 'use client';
 
+import { cn } from '@m7/audio-os/shared/utils';
 import { Button } from '@m7/audio-os/ui/primitives';
-import Image from 'next/image';
+import { HugeiconsIcon, type IconSvgElement } from '@hugeicons/react';
 
 interface ControlButtonProps {
-  icon: string;
+  icon: IconSvgElement;
   alt: string;
   onClick: () => void;
   size?: 'sm' | 'lg';
-  variant?: 'dark' | 'white';
+  tone?: 'default' | 'muted' | 'primary';
 }
 
-export function ControlButton({
-  icon,
-  alt,
-  onClick,
-  size = 'sm',
-  variant = 'dark',
-}: ControlButtonProps) {
-  const dimension = size === 'lg' ? 'w-14 h-14' : 'w-12 h-12';
+const TONE: Record<NonNullable<ControlButtonProps['tone']>, string> = {
+  default: 'text-foreground',
+  muted: 'text-muted-foreground',
+  primary: 'text-primary hover:text-primary',
+};
 
+export function ControlButton({ icon, alt, onClick, size = 'sm', tone = 'default' }: ControlButtonProps) {
   return (
     <Button
       size="icon"
-      variant={variant === 'white' ? 'default' : 'secondary'}
+      variant="ghost"
       onClick={onClick}
       aria-label={alt}
-      className={`${dimension} rounded-full shadow-md`}
+      className={cn(size === 'lg' ? 'size-12' : 'size-10', TONE[tone])}
     >
-      <Image
-        src={icon}
-        alt={alt}
-        width={size === 'lg' ? 28 : 22}
-        height={size === 'lg' ? 28 : 22}
-        className={variant === 'dark' ? 'invert' : ''}
-      />
+      <HugeiconsIcon icon={icon} size={size === 'lg' ? 28 : 22} strokeWidth={2} />
     </Button>
   );
 }

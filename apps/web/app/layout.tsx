@@ -34,7 +34,7 @@ export default function RootLayout({
             <Sidebar />
             <div className="flex flex-col flex-1 min-w-0 overflow-hidden">
               <Suspense><TopBar /></Suspense>
-              <main className="flex-1 overflow-y-auto pb-20">{children}</main>
+              <main className="flex-1 overflow-y-auto pb-44">{children}</main>
             </div>
           </div>
           <PlayerBarConnected />

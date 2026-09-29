@@ -5,8 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const NAV = [
-  { href: '/', label: 'Home', icon: '/icons/svg/music.svg' },
-  { href: '/playlists', label: 'Playlists', icon: '/icons/svg/music.svg' },
+  { href: '/browse', label: 'Browse', icon: '/icons/svg/music.svg' },
   { href: '/tracks', label: 'Tracks', icon: '/icons/svg/music.svg' },
 ] as const;
 
@@ -18,7 +17,7 @@ export function Sidebar() {
 
 
       {NAV.map(({ href, label, icon }) => {
-        const isActive = href === '/' ? pathname === '/' : pathname.startsWith(href);
+        const isActive = pathname.startsWith(href);
         return (
           <Link
             key={href}
