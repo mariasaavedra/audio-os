@@ -10,6 +10,8 @@
     "dev": "npm run dev -w apps/web",
     "build": "npm run build -w apps/web",
     "start": "npm run start -w apps/web",
+    "deploy": "bash apps/web/scripts/package-artifact.sh && bash apps/web/scripts/deploy-artifact.sh",
+    "deploy:dry-run": "bash apps/web/scripts/package-artifact.sh --dry-run && bash apps/web/scripts/deploy-artifact.sh --dry-run",
 
     "typecheck": "tsc --noEmit",
     "typecheck:web": "tsc --noEmit -p apps/web/tsconfig.json",

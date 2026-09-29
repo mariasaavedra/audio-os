@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { getAllTracks } from '@/lib/audio/tracks';
 import { toAudioError } from '@/lib/audio/errors';
 
-const LIMIT = 50;
+const LIMIT = 200;
 
 export async function GET(req: Request) {
   try {
