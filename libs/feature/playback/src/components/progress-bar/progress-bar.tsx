@@ -21,27 +21,22 @@ export function ProgressBar({ position, duration, onSeek }: ProgressBarProps) {
 
   return (
     <div className="flex items-center gap-3 w-full">
-      <span className="text-base tabular-nums text-charcoal/70 w-10 text-right">
+      <span className="text-base tabular-nums text-muted-foreground w-10 text-right">
         {formatMs(pos)}
       </span>
 
       <Slider
-        value={pos}
-        minValue={0}
-        maxValue={dur || 1}
+        value={[pos]}
+        min={0}
+        max={dur || 1}
         step={1}
-        onChange={(val) => onSeek(val as number)}
-        isDisabled={dur === 0}
+        onValueChange={([val]) => onSeek(val)}
+        disabled={dur === 0}
         aria-label="Playback position"
         className="flex-1"
-      >
-        <Slider.Track>
-          <Slider.Fill />
-          <Slider.Thumb />
-        </Slider.Track>
-      </Slider>
+      />
 
-      <span className="text-base tabular-nums text-charcoal/70 w-10">
+      <span className="text-base tabular-nums text-muted-foreground w-10">
         {dur > 0 ? formatMs(dur) : '--:--'}
       </span>
     </div>

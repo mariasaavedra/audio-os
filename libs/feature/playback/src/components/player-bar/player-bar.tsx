@@ -19,10 +19,10 @@ export function PlayerBar({ snapshot, onAction }: PlayerBarProps) {
   const isPaused = state === 'paused';
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 h-fit py-8 bg-light/90 backdrop-blur-md border-t border-charcoal/10 z-50 flex items-center px-4 gap-4">
+    <div className="fixed bottom-0 left-0 right-0 h-fit py-8 bg-background/90 backdrop-blur-md border-t border-border z-50 flex items-center px-4 gap-4">
       {/* Left: artwork + track info */}
       <div className="flex items-center gap-3 w-52 shrink-0">
-        <div className="w-25 h-25 rounded-lg overflow-hidden bg-charcoal/10 flex items-center justify-center shrink-0">
+        <div className="w-25 h-25 rounded-lg overflow-hidden bg-muted flex items-center justify-center shrink-0">
           {artworkUrl ? (
             <Image
               src={artworkUrl}
@@ -33,12 +33,12 @@ export function PlayerBar({ snapshot, onAction }: PlayerBarProps) {
               unoptimized
             />
           ) : (
-            <Image src="/icons/svg/music.svg" alt="" width={18} height={18} className="opacity-30" />
+            <Image src="/icons/svg/music.svg" alt="" width={18} height={18} className="opacity-30 invert" />
           )}
         </div>
         <div className="min-w-0">
-          <p className="text-lg font-medium text-dark truncate">{track?.name ?? 'Select a song'}</p>
-          {track && <p className="text-base text-charcoal/60 truncate">{track.artist}</p>}
+          <p className="text-lg font-medium text-foreground truncate">{track?.name ?? 'Select a song'}</p>
+          {track && <p className="text-base text-muted-foreground truncate">{track.artist}</p>}
         </div>
       </div>
 
@@ -82,9 +82,9 @@ export function PlayerBar({ snapshot, onAction }: PlayerBarProps) {
 
       {/* Right: volume (static placeholder) */}
       <div className="w-52 shrink-0 flex justify-end items-center gap-2">
-        <Image src="/icons/svg/music.svg" alt="Volume" width={15} height={15} className="opacity-40" />
-        <div className="w-20 h-1.5 bg-charcoal/15 rounded-full overflow-hidden">
-          <div className="w-3/4 h-full bg-charcoal/40 rounded-full" />
+        <Image src="/icons/svg/music.svg" alt="Volume" width={15} height={15} className="opacity-40 invert" />
+        <div className="w-20 h-1.5 bg-muted rounded-full overflow-hidden">
+          <div className="w-3/4 h-full bg-muted-foreground/40 rounded-full" />
         </div>
       </div>
     </div>

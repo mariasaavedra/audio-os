@@ -13,7 +13,7 @@ export default function TracksPage() {
 
   return (
     <main className="px-6 py-5 max-w-8xl">
-      <h1 className="text-2xl font-bold text-dark mb-6">Tracks</h1>
+      <h1 className="text-2xl font-bold text-foreground mb-6">Tracks</h1>
       <TrackList
         tracks={tracks}
         onPlayTrack={(uri) => action.mutate({ action: 'playTrack', uri })}

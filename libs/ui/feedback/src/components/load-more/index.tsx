@@ -1,6 +1,7 @@
 'use client';
 
-import { Button } from '@heroui/react';
+import { Button } from '@m7/audio-os/ui/primitives';
+import { cn } from '@m7/audio-os/shared/utils';
 import { Spinner } from '../spinner';
 
 interface LoadMoreProps {
@@ -13,11 +14,11 @@ interface LoadMoreProps {
 export function LoadMore({ hasMore, isLoading, onLoadMore, className }: LoadMoreProps) {
   if (!hasMore) return null;
   return (
-    <div className={`flex justify-center mt-2 ${className ?? ''}`}>
+    <div className={cn('flex justify-center mt-2', className)}>
       {isLoading ? (
-        <Spinner size="sm" />
+        <Spinner />
       ) : (
-        <Button variant="ghost" onPress={onLoadMore}>
+        <Button variant="ghost" onClick={onLoadMore}>
           Load more
         </Button>
       )}

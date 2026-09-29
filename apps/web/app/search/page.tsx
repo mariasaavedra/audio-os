@@ -16,12 +16,12 @@ function SearchPageInner() {
 
   return (
     <div className="px-6 py-5 max-w-2xl">
-      <h1 className="text-2xl font-bold text-dark mb-6">
+      <h1 className="text-2xl font-bold text-foreground mb-6">
         {query ? `Results for "${query}"` : 'Search'}
       </h1>
 
       {isFetching && !isFetchingNextPage && (
-        <p className="text-lg text-charcoal/50 px-3">Searching…</p>
+        <p className="text-lg text-muted-foreground px-3">Searching…</p>
       )}
 
       {!isFetching && query && (
@@ -37,7 +37,7 @@ function SearchPageInner() {
       )}
 
       {!query && (
-        <p className="text-lg text-charcoal/50">Type something in the search bar above.</p>
+        <p className="text-lg text-muted-foreground">Type something in the search bar above.</p>
       )}
     </div>
   );

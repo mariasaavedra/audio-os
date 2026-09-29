@@ -25,7 +25,7 @@ export function TrackList({
 }: TrackListProps) {
   return (
     <div className="flex flex-col">
-      <div className="grid grid-cols-[3rem_1fr_5rem_6rem] px-4 pb-2 border-b border-charcoal/10 text-xs font-medium text-charcoal/40 uppercase tracking-wider">
+      <div className="grid grid-cols-[3rem_1fr_5rem_6rem] px-4 pb-2 border-b border-border text-xs font-medium text-muted-foreground uppercase tracking-wider">
         <span className="text-center">#</span>
         <span>Title</span>
         <span className="text-right">Duration</span>

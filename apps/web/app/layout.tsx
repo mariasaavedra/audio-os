@@ -1,15 +1,15 @@
 import { Sidebar, TopBar } from '@m7/audio-os/feature/shell';
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Geist_Mono, Figtree, Nunito_Sans } from 'next/font/google';
 import { Suspense } from 'react';
 import './globals.css';
 import { PlayerBarConnected } from './player-bar-connected';
 import { Providers } from './providers';
+import { cn } from "@m7/audio-os/shared/utils";
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
+const nunitoSansHeading = Nunito_Sans({subsets:['latin'],variable:'--font-nunito-sans'});
+
+const figtree = Figtree({subsets:['latin'],variable:'--font-figtree'});
 
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
@@ -27,8 +27,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="h-full bg-light">
+    <html lang="en" className={cn("dark", "h-full", "antialiased", geistMono.variable, figtree.variable, nunitoSansHeading.variable)}>
+      <body className="h-full bg-background">
         <Providers>
           <div className="flex h-full">
             <Sidebar />

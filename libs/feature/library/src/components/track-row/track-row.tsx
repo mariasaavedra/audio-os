@@ -19,23 +19,23 @@ interface TrackRowProps {
 
 export function TrackRow({ track, index, onPlay, onAdd }: TrackRowProps) {
   return (
-    <div className="grid grid-cols-[3rem_1fr_5rem_6rem] items-center px-4 py-3 hover:bg-charcoal/5 group border-b border-charcoal/5 last:border-0">
-      <span className="text-sm tabular-nums text-charcoal/40 text-center">{index}</span>
+    <div className="grid grid-cols-[3rem_1fr_5rem_6rem] items-center px-4 py-3 hover:bg-secondary group border-b border-border last:border-0">
+      <span className="text-sm tabular-nums text-muted-foreground text-center">{index}</span>
 
       <div className="flex flex-col min-w-0 pr-4">
-        <span className="text-sm font-medium text-dark truncate">{track.name}</span>
-        <span className="text-xs text-charcoal/50 truncate">{track.artist}</span>
+        <span className="text-sm font-medium text-foreground truncate">{track.name}</span>
+        <span className="text-xs text-muted-foreground truncate">{track.artist}</span>
       </div>
 
-      <span className="text-sm tabular-nums text-charcoal/40 text-right">
+      <span className="text-sm tabular-nums text-muted-foreground text-right">
         {track.duration != null ? formatMs(track.duration) : '—'}
       </span>
 
       <div className="flex gap-1 justify-end opacity-0 group-hover:opacity-100 transition-opacity">
-        <Button size="sm" onPress={onPlay}>
+        <Button size="sm" onClick={onPlay}>
           Play
         </Button>
-        <Button size="sm" variant="secondary" onPress={onAdd}>
+        <Button size="sm" variant="secondary" onClick={onAdd}>
           +
         </Button>
       </div>

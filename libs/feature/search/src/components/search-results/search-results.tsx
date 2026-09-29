@@ -24,7 +24,7 @@ export function SearchResults({
 }: SearchResultsProps) {
   if (tracks.length === 0) {
     return (
-      <p className="text-lg text-charcoal/50 px-3">
+      <p className="text-lg text-muted-foreground px-3">
         No results for &ldquo;{query}&rdquo;.
       </p>
     );

@@ -9,7 +9,15 @@
     "jsx": "react-jsx",
     "strict": true,
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "paths": {
+      "@m7/audio-os/ui/primitives": ["./primitives/src/index.ts"],
+      "@m7/audio-os/ui/primitives/*": ["./primitives/src/*"],
+      "@m7/audio-os/ui/feedback": ["./feedback/src/index.ts"],
+      "@m7/audio-os/ui/navigation": ["./navigation/src/index.ts"],
+      "@m7/audio-os/shared/utils": ["../shared/utils/src/index.ts"],
+      "@m7/audio-os/shared/utils/*": ["../shared/utils/src/*"]
+    }
   },
   "include": ["primitives/src", "feedback/src", "navigation/src"]
 }

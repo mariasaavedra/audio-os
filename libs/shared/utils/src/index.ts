@@ -3,3 +3,5 @@ export const encodeUri = (uri: string): string =>
 
 export const decodeUri = (encoded: string): string =>
   atob(encoded.replace(/-/g, '+').replace(/_/g, '/'));
+
+export { cn } from './lib/utils';

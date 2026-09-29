@@ -18,7 +18,7 @@ export function AlbumCard({ name, artist, year, artworkUrl, onClick }: AlbumCard
   const hue = hueFromString(name);
 
   return (
-    <Button variant="ghost" onPress={onClick} className="flex flex-col gap-2 text-left w-full h-auto p-0 group">
+    <Button variant="ghost" onClick={onClick} className="flex flex-col gap-2 text-left w-full h-auto p-0 group">
       <Card className="w-full">
         <div className="aspect-square w-full rounded-xl overflow-hidden shadow-sm">
           {artworkUrl ? (
@@ -42,8 +42,8 @@ export function AlbumCard({ name, artist, year, artworkUrl, onClick }: AlbumCard
           )}
         </div>
         <div className="min-w-0 px-0.5 py-1">
-          <p className="text-lg font-medium text-dark truncate">{name}</p>
-          {subtitle && <p className="text-base text-charcoal/55 truncate">{subtitle}</p>}
+          <p className="text-lg font-medium text-foreground truncate">{name}</p>
+          {subtitle && <p className="text-base text-muted-foreground truncate">{subtitle}</p>}
         </div>
       </Card>
     </Button>

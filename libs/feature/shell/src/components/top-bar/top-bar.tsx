@@ -25,26 +25,26 @@ export function TopBar() {
   }
 
   return (
-    <header className="flex items-center gap-3 px-4 py-2.5 border-b border-charcoal/8 bg-light shrink-0">
+    <header className="flex items-center gap-3 px-4 py-2.5 border-b border-border bg-background shrink-0">
       {/* Back / Forward */}
       <div className="flex items-center gap-1 shrink-0">
         <Button
-          isIconOnly
+          size="icon"
           variant="ghost"
-          onPress={() => router.back()}
+          onClick={() => router.back()}
           aria-label="Back"
-          className="w-7 h-7 rounded-full bg-charcoal/8 hover:bg-charcoal/15"
+          className="w-7 h-7 rounded-full bg-muted hover:bg-secondary"
         >
-          <Image src="/icons/svg/arrow-left.svg" alt="" width={13} height={13} className="opacity-50" />
+          <Image src="/icons/svg/arrow-left.svg" alt="" width={13} height={13} className="opacity-50 invert" />
         </Button>
         <Button
-          isIconOnly
+          size="icon"
           variant="ghost"
-          onPress={() => router.forward()}
+          onClick={() => router.forward()}
           aria-label="Forward"
-          className="w-7 h-7 rounded-full bg-charcoal/8 hover:bg-charcoal/15"
+          className="w-7 h-7 rounded-full bg-muted hover:bg-secondary"
         >
-          <Image src="/icons/svg/arrow-left.svg" alt="" width={13} height={13} className="opacity-50 scale-x-[-1]" />
+          <Image src="/icons/svg/arrow-left.svg" alt="" width={13} height={13} className="opacity-50 invert scale-x-[-1]" />
         </Button>
       </div>
 
@@ -61,12 +61,12 @@ export function TopBar() {
 
       {/* Avatar */}
       <Button
-        isIconOnly
+        size="icon"
         variant="ghost"
         aria-label="Profile"
-        className="w-8 h-8 rounded-full bg-charcoal/10 hover:bg-charcoal/18 shrink-0"
+        className="w-8 h-8 rounded-full bg-muted hover:bg-secondary shrink-0"
       >
-        <Image src="/icons/svg/user.svg" alt="" width={15} height={15} className="opacity-55" />
+        <Image src="/icons/svg/user.svg" alt="" width={15} height={15} className="opacity-55 invert" />
       </Button>
     </header>
   );

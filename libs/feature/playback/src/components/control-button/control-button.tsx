@@ -19,14 +19,14 @@ export function ControlButton({
   variant = 'dark',
 }: ControlButtonProps) {
   const dimension = size === 'lg' ? 'w-14 h-14' : 'w-12 h-12';
-  const bg = variant === 'white' ? 'bg-light' : 'bg-charcoal';
 
   return (
     <Button
-      isIconOnly
-      onPress={onClick}
+      size="icon"
+      variant={variant === 'white' ? 'default' : 'secondary'}
+      onClick={onClick}
       aria-label={alt}
-      className={`${dimension} ${bg} rounded-full shadow-md`}
+      className={`${dimension} rounded-full shadow-md`}
     >
       <Image
         src={icon}

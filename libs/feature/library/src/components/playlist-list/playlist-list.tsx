@@ -10,7 +10,7 @@ interface PlaylistListProps {
 
 export function PlaylistList({ playlists, onStartPlaylist }: PlaylistListProps) {
   if (playlists.length === 0) {
-    return <p className="text-lg text-charcoal/50 px-3">No playlists found.</p>;
+    return <p className="text-lg text-muted-foreground px-3">No playlists found.</p>;
   }
 
   return (

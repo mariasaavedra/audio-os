@@ -14,7 +14,7 @@ export function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="w-40 shrink-0 flex flex-col bg-light border-r border-charcoal/10 py-5 px-3 gap-0.5">
+    <aside className="w-40 shrink-0 flex flex-col bg-sidebar text-sidebar-foreground border-r border-sidebar-border py-5 px-3 gap-0.5">
 
 
       {NAV.map(({ href, label, icon }) => {
@@ -24,7 +24,7 @@ export function Sidebar() {
             key={href}
             href={href}
             className={`flex items-center gap-2.5 px-2 py-2 rounded-lg text-lg transition-colors ${
-              isActive ? 'bg-dark text-light font-medium' : 'text-charcoal hover:bg-charcoal/8'
+              isActive ? 'bg-sidebar-primary text-sidebar-primary-foreground font-medium' : 'text-sidebar-foreground/70 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground'
             }`}
           >
             <Image
@@ -32,7 +32,7 @@ export function Sidebar() {
               alt=""
               width={14}
               height={14}
-              className={isActive ? 'invert' : 'opacity-50'}
+              className={isActive ? '' : 'invert opacity-50'}
             />
             {label}
           </Link>

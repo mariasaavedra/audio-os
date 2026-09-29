@@ -202,6 +202,11 @@ The Next.js config (`apps/web/next.config.ts`):
 - Feature modules can import from `libs/shared/types` for domain types
 - Use path aliases like `@m7/audio-os/feature/shell` to import from feature modules
 
+**UI Library (`libs/ui/`):**
+- Built on shadcn (preset `b11PQ3RjIW`, `radix-sera`, hugeicons). Dark mode is fixed via the `dark` class on `<html>`; theme tokens live in `apps/web/app/globals.css`.
+- Add components with `libs/ui/scripts/add.sh <name>...` (runs the shadcn CLI from `apps/web`, then moves output to `primitives/src/components/<name>/index.tsx` and exports it).
+- `cn()` lives in `libs/shared/utils`. Use semantic tokens (`bg-background`, `text-muted-foreground`) rather than raw colors.
+
 **Shared Libraries (`libs/shared/`):**
 - Domain types live in `libs/shared/types` and are the source of truth
 - `apps/web/lib/audio/contract.ts` currently re-exports these types (migration in progress)

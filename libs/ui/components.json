@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "radix-sera",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "../../apps/web/app/globals.css",
+    "baseColor": "mist",
+    "cssVariables": true
+  },
+  "iconLibrary": "hugeicons",
+  "aliases": {
+    "components": "@m7/audio-os/ui/primitives/components",
+    "ui": "@m7/audio-os/ui/primitives/components",
+    "utils": "@m7/audio-os/shared/utils/lib/utils",
+    "lib": "@m7/audio-os/shared/utils/lib",
+    "hooks": "@m7/audio-os/ui/primitives/hooks"
+  },
+  "menuColor": "default",
+  "menuAccent": "bold",
+  "rtl": false
+}
